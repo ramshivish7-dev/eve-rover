@@ -1,0 +1,425 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.control-panel {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    color: #2d3748;
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+/* Status Box */
+.status-box {
+    background: #f7fafc;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status {
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.status.connected {
+    background: #48bb78;
+    color: white;
+}
+
+.status.disconnected {
+    background: #f56565;
+    color: white;
+}
+
+#signal-strength {
+    font-size: 12px;
+    color: #718096;
+    font-weight: 600;
+}
+
+/* IP Configuration */
+.ip-config {
+    margin-bottom: 20px;
+}
+
+.ip-config label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #2d3748;
+}
+
+.ip-config input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.ip-config input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.ip-config button {
+    width: 100%;
+    padding: 12px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.ip-config button:hover {
+    background: #5a67d8;
+}
+
+.ip-config button:active {
+    transform: scale(0.98);
+}
+
+/* MODE SELECTOR */
+.mode-selector {
+    margin-bottom: 20px;
+}
+
+.mode-selector label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #2d3748;
+    font-size: 16px;
+}
+
+.mode-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.mode-btn {
+    padding: 15px;
+    background: #e2e8f0;
+    color: #4a5568;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+.mode-btn:hover {
+    background: #cbd5e0;
+    transform: translateY(-2px);
+}
+
+.mode-btn.active {
+    background: #667eea;
+    color: white;
+    border-color: #5a67d8;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.mode-btn:active {
+    transform: scale(0.95);
+}
+
+/* Mode Description */
+.mode-description {
+    background: #edf2f7;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #4a5568;
+    text-align: center;
+    border-left: 4px solid #667eea;
+}
+
+/* Speed Control */
+.speed-control {
+    margin-bottom: 20px;
+    transition: opacity 0.3s;
+}
+
+.speed-control label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #2d3748;
+}
+
+#speed-slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #e2e8f0;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+#speed-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+}
+
+#speed-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+    border: none;
+}
+
+#speed-display {
+    color: #667eea;
+    font-size: 18px;
+}
+
+/* Button Grid */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 80px);
+    gap: 10px;
+    margin-bottom: 20px;
+    transition: opacity 0.3s;
+}
+
+.control-btn {
+    background: #2d3748;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.control-btn:hover {
+    background: #4a5568;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+.control-btn.stop {
+    background: #f56565;
+    font-size: 18px;
+}
+
+.control-btn.stop:hover {
+    background: #e53e3e;
+}
+
+.control-btn.active {
+    background: #667eea;
+    transform: scale(0.95);
+}
+
+/* Autonomous Mode Display */
+.auto-mode-display {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+}
+
+.auto-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.auto-status p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.auto-hint {
+    font-size: 14px !important;
+    opacity: 0.9;
+    font-weight: normal !important;
+}
+
+/* Distance Display in Auto Mode */
+.distance-display {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    font-size: 16px;
+}
+
+#distance-value {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Spinner Animation */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Info Panel */
+.info-panel {
+    background: #f7fafc;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row span:first-child {
+    color: #718096;
+    font-weight: 600;
+}
+
+.info-row span:last-child {
+    color: #2d3748;
+    font-weight: bold;
+}
+
+/* Help Box */
+.help-box {
+    background: #edf2f7;
+    border-radius: 8px;
+    padding: 10px;
+    transition: opacity 0.3s;
+}
+
+.help-box summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: #4a5568;
+    padding: 5px;
+}
+
+.help-box ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.help-box li {
+    padding: 3px 0;
+    color: #718096;
+    font-size: 13px;
+}
+
+.help-box kbd {
+    background: #cbd5e0;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-weight: bold;
+    color: #2d3748;
+    font-size: 11px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .control-panel {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 22px;
+    }
+    
+    .button-grid {
+        grid-template-rows: repeat(3, 70px);
+    }
+    
+    .control-btn {
+        font-size: 14px;
+    }
+}
+
+/* Pulse animation for active mode */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+    }
+}
+
+.mode-btn.active {
+    animation: pulse 2s infinite;
+}

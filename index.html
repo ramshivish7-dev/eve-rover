@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Rover Control</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="control-panel">
+            
+            <!-- Header -->
+            <h1>🚗 ESP32 Rover Control</h1>
+            
+            <!-- Connection Status -->
+            <div class="status-box">
+                <div id="connection-status" class="status disconnected">
+                    ⚠️ Disconnected
+                </div>
+                <div id="signal-strength">Signal: --</div>
+            </div>
+
+            <!-- IP Address Input -->
+            <div class="ip-config">
+                <label>Rover IP Address:</label>
+                <input type="text" id="rover-ip" placeholder="192.168.1.100" value="192.168.1.100">
+                <button onclick="connectRover()">Connect</button>
+            </div>
+
+            <!-- MODE SELECTOR -->
+            <div class="mode-selector">
+                <label>🎮 Control Mode:</label>
+                <div class="mode-buttons">
+                    <button class="mode-btn active" data-mode="manual" onclick="switchMode('manual')">
+                        🕹️ Manual Control
+                    </button>
+                    <button class="mode-btn" data-mode="autonomous" onclick="switchMode('autonomous')">
+                        🤖 Autonomous (Obstacle Avoidance)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mode Description -->
+            <div class="mode-description" id="mode-description">
+                <strong>Manual Mode:</strong> Control the rover with buttons or keyboard
+            </div>
+
+            <!-- Speed Slider (only visible in manual mode) -->
+            <div class="speed-control" id="speed-control">
+                <label>Speed: <span id="speed-display">120</span></label>
+                <input type="range" id="speed-slider" min="60" max="200" value="120" 
+                       oninput="updateSpeed(this.value)">
+            </div>
+
+            <!-- Manual Control Buttons (only visible in manual mode) -->
+            <div class="button-grid" id="manual-controls">
+                <div></div>
+                <button class="control-btn" onclick="move('forward')">
+                    ⬆️<br>Forward
+                </button>
+                <div></div>
+
+                <button class="control-btn" onclick="move('left')">
+                    ⬅️<br>Left
+                </button>
+                <button class="control-btn stop" onclick="move('stop')">
+                    ⏹️<br>STOP
+                </button>
+                <button class="control-btn" onclick="move('right')">
+                    ➡️<br>Right
+                </button>
+
+                <div></div>
+                <button class="control-btn" onclick="move('backward')">
+                    ⬇️<br>Back
+                </button>
+                <div></div>
+            </div>
+
+            <!-- Autonomous Mode Display -->
+            <div class="auto-mode-display" id="auto-display" style="display: none;">
+                <div class="auto-status">
+                    <div class="spinner"></div>
+                    <p>🤖 Autonomous Mode Active</p>
+                    <p class="auto-hint">Avoiding obstacles automatically!</p>
+                    <div class="distance-display">
+                        <span>Distance:</span>
+                        <span id="distance-value">-- cm</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Display -->
+            <div class="info-panel">
+                <div class="info-row">
+                    <span>Battery:</span>
+                    <span id="battery">-- V</span>
+                </div>
+                <div class="info-row">
+                    <span>Current Action:</span>
+                    <span id="current-action">stop</span>
+                </div>
+                <div class="info-row">
+                    <span>Active Mode:</span>
+                    <span id="active-mode">manual</span>
+                </div>
+                <div class="info-row" id="distance-row" style="display: none;">
+                    <span>Distance:</span>
+                    <span id="distance-info">-- cm</span>
+                </div>
+            </div>
+
+            <!-- Keyboard Hints (only visible in manual mode) -->
+            <div class="help-box" id="keyboard-help">
+                <details>
+                    <summary>⌨️ Keyboard Controls</summary>
+                    <ul>
+                        <li><kbd>W</kbd> or <kbd>↑</kbd> = Forward</li>
+                        <li><kbd>S</kbd> or <kbd>↓</kbd> = Backward</li>
+                        <li><kbd>A</kbd> or <kbd>←</kbd> = Left</li>
+                        <li><kbd>D</kbd> or <kbd>→</kbd> = Right</li>
+                        <li><kbd>Space</kbd> = Stop</li>
+                        <li><kbd>M</kbd> = Manual Mode</li>
+                        <li><kbd>Esc</kbd> = Emergency Stop</li>
+                    </ul>
+                </details>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
